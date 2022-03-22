@@ -7,7 +7,7 @@ public class PlayerMove : MonoBehaviour
 {
     CharacterController cc;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         cc = GetComponent<CharacterController>();
@@ -19,7 +19,10 @@ public class PlayerMove : MonoBehaviour
     float yVelocity;
     int jumpCount; //다중 점프 뛰고 싶다.
     public int maxJumpCount = 2;
-    // Update is called once per frame
+    private void Awake()
+    {
+        Application.targetFrameRate = 40;
+    }
     void Update()
     {
         
@@ -47,7 +50,7 @@ public class PlayerMove : MonoBehaviour
         float v = Input.GetAxis("Vertical");
         Vector3 dir = new Vector3(h, 0, v);
 
-        //방향축을 카메라를 기준으로 변경하고 싶다.***
+        //방향축을 카메라를 기준으로 dir를 변경하고 싶다.***
         dir = Camera.main.transform.TransformDirection(dir);
         dir.y = 0;
         dir.Normalize(); //원본의 크기를 1로 cf)dir.normalized : 복사본을 만들어서 1로 바꾼 다음 반환.
