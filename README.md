@@ -6,3 +6,6 @@
 총알효과
 적 AI
 애니메이션
+
+FSM 구현
+Animator 조작
