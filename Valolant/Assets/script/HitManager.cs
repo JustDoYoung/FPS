@@ -16,7 +16,6 @@ public class HitManager : MonoBehaviour
 
     public GameObject imageHit;
 
-    // Start is called before the first frame update
     void Start()
     {
         imageHit.SetActive(false);
@@ -35,10 +34,5 @@ public class HitManager : MonoBehaviour
         //안 보이게 한다.
         imageHit.SetActive(false);
         yield return new WaitForSeconds(0.1f);
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

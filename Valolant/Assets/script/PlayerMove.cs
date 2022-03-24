@@ -56,7 +56,6 @@ public class PlayerMove : MonoBehaviour
         dir.Normalize(); //원본의 크기를 1로 cf)dir.normalized : 복사본을 만들어서 1로 바꾼 다음 반환.
         Vector3 velocity = dir * speed;
         
-        
         //3. 이동방향의 y속성에 y속도를 대입하고 싶다.
         velocity.y = yVelocity;
 
