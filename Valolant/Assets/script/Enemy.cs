@@ -128,10 +128,15 @@ public class Enemy : MonoBehaviour
     /// <summary>
     /// Player -> Enemy를 공격함.
     /// </summary>
+    bool isdead;
     public void TryDamage(int damageValue)
     {
         //체력이 이미 0이하라면 함수를 바로 종료하고 싶다.
-        if (enemyHP.HP <= 0)
+        //if (enemyHP.HP <= 0)
+        //{
+        //    return;
+        //}
+        if (isdead)
         {
             return;
         }
@@ -140,8 +145,9 @@ public class Enemy : MonoBehaviour
         //데미지를 입었을 때 추적기능을 멈추고 싶다.
         agent.isStopped = true;
 
-        if (enemyHP.HP == 0)
+        if (enemyHP.HP <= 0)
         {
+            isdead = true;
             //죽음
             //애니메이션 이벤트
             state = State.Death;

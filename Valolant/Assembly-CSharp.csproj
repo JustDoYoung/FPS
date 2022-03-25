@@ -69,15 +69,19 @@
     <Compile Include="Assets\script\CameraRotate.cs" />
     <Compile Include="Assets\JMO Assets\WarFX\Scripts\WFX_BulletHoleDecal.cs" />
     <Compile Include="Assets\JMO Assets\WarFX\Demo\Assets\CFX_Demo_RandomDir.cs" />
+    <Compile Include="Assets\script\Billboard.cs" />
     <Compile Include="Assets\script\PlayerMove.cs" />
     <Compile Include="Assets\JMO Assets\WarFX\Demo\Assets\CFX_Demo_Translate.cs" />
     <Compile Include="Assets\script\Enemy.cs" />
     <Compile Include="Assets\JMO Assets\WarFX\Demo\Assets\WFX_Demo_Wall.cs" />
     <Compile Include="Assets\script\EnemyAnimEvent.cs" />
+    <Compile Include="Assets\script\EnemyHP.cs" />
     <Compile Include="Assets\JMO Assets\WarFX\Scripts\CFX_AutoDestructShuriken.cs" />
     <Compile Include="Assets\JMO Assets\WarFX\Demo\Assets\WFX_Demo_New.cs" />
-    <Compile Include="Assets\script\Billboard.cs" />
-    <Compile Include="Assets\script\EnemyHP.cs" />
+    <Compile Include="Assets\script\EnemyManagerStep1.cs" />
+    <Compile Include="Assets\script\SpawnManager.cs" />
+    <Compile Include="Assets\script\Grenade.cs" />
+    <Compile Include="Assets\script\PlayerThrow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\JMO Assets\WarFX\Shaders\WFX_S Multiply Soft.shader" />
