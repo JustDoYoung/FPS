@@ -23,6 +23,7 @@ public class PlayerThrow : MonoBehaviour
             //폭탄의 앞방향을 내가 던지고자 하는 방향으로 회전시키고 싶다.(내 기준 45도 방향)
             //Vector3 dir = transform.forward + transform.up; //내 기준 45도 방향
             //grenade.transform.foward = dir;
+
             //폭탄의 앞방향을 내가 던지고자 하는 방향으로 회전시키고 싶다.(내 기준 50도 방향)
             //Quaternion q = grenadeThrowPosition.rotation * Quaternion.Euler(-50, 0, 0); //기준의 회전좌표 * Quaternion.Euler(회전각)
             //grenade.transform.rotation = q;

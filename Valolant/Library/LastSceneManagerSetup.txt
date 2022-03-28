@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/frag_grenade_dm51a1/scene.unity
+- path: Assets/Scenes/SampleScene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

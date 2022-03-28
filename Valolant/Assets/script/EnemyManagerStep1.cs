@@ -7,7 +7,7 @@ using UnityEngine;
 public class EnemyManagerStep1 : MonoBehaviour
 {
     float curTime;
-    float createTime = 1;
+    float createTime;
     public GameObject enemyFactory;
     public float min = 1;
     public float max = 3;
