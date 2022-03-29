@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +13,7 @@ public class Billboard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //³ªÀÇ È¸Àü¹æÇâ = Ä«¸Ş¶óÀÇ È¸Àü¹æÇâ
+        //ë‚˜ì˜ íšŒì „ë°©í–¥ = ì¹´ë©”ë¼ì˜ íšŒì „ë°©í–¥
         transform.rotation = Camera.main.transform.rotation;
     }
 }

@@ -1,15 +1,15 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-//¸ñÀûÁö¸¦ ÇâÇØ¼­ ÀÌµ¿ÇÏ°í ½Í´Ù. 
-//agent±â´ÉÀ» ÀÌ¿ëÇØ¼­
-//FSM : ¸ñÇ¥°Ë»ö, ±âº»µ¿ÀÛ(´ë±â-¾Ö´Ï¸ŞÀÌ¼Ç ÀÌº¥Æ®), ÀÌµ¿, °ø°İ
+//ëª©ì ì§€ë¥¼ í–¥í•´ì„œ ì´ë™í•˜ê³  ì‹¶ë‹¤. 
+//agentê¸°ëŠ¥ì„ ì´ìš©í•´ì„œ
+//FSM : ëª©í‘œê²€ìƒ‰, ê¸°ë³¸ë™ì‘(ëŒ€ê¸°-ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸), ì´ë™, ê³µê²©
 public class Enemy : MonoBehaviour
 {
-    //¿­°ÅÇü
+    //ì—´ê±°í˜•
     enum State
     {
         Idle,
@@ -22,8 +22,19 @@ public class Enemy : MonoBehaviour
     EnemyHP enemyHP;
 
     float distance;
-    State state; //ÇöÀç »óÅÂ
+    State state; //í˜„ì¬ ìƒíƒœ
+    List<State> preState = new List<State>();
 
+    //ìì£¼ ì“°ëŠ” ê¸°ëŠ¥ì€ í•¨ìˆ˜ë¡œ ë§Œë“¤ì–´ì„œ ë¬¶ì–´ ë†“ì.
+    void setState(State next, string animationName = null)
+    {
+        preState.Add(state);
+        state = next; //ìƒíƒœë„ ë³€ê²½í•˜ê³ 
+        if (null != animationName)
+        {
+            anim.SetTrigger(animationName); //ì• ë‹ˆë©”ì´ì…˜ë„ ë°”ê¾¸ê³ 
+        }
+    }
     GameObject target;
     NavMeshAgent agent;
 
@@ -31,29 +42,35 @@ public class Enemy : MonoBehaviour
     {
         Application.targetFrameRate = 40;
     }
+
+    //Enemyê°€ ë°ë¯¸ì§€ë¥¼ ì…ì—ˆì„ ë•Œ ìƒ‰ì„ ë°”ê¾¸ê³  ì‹¶ë‹¤.
+    //ì´ì— ë§ìœ¼ë©´ 0.1ì´ˆ ë™ì•ˆ Mat_red ì¬ì§ˆë¡œ ë°”ê¾¸ê³  ì‹¶ë‹¤.
+    public Material matRed;
+    SkinnedMeshRenderer[] rendList;
     void Start()
     {
-        state = State.Idle;
+        setState(State.Idle, "Idle");
         agent = this.GetComponent<NavMeshAgent>();
         enemyHP = this.GetComponent<EnemyHP>();
+        rendList = GetComponentsInChildren<SkinnedMeshRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //FSMÀ» ±¸ÇöÇÒ ¶§ switch¹®À» ÁÖ·Î »ç¿ëÇÑ´Ù.
+        //FSMì„ êµ¬í˜„í•  ë•Œ switchë¬¸ì„ ì£¼ë¡œ ì‚¬ìš©í•œë‹¤.
         switch (state)
         {
             case State.Idle:
-                //¸¸¾à ÇöÀç»óÅÂ°¡ ¸ñÇ¥°Ë»öÀÌ¶ó¸é °Ë»ö¸¸ ÇÏ°í ½Í´Ù.
-                UpdateSearch(); //alt + enter ¸Ş¼Òµå »ı¼º
+                //ë§Œì•½ í˜„ì¬ìƒíƒœê°€ ëª©í‘œê²€ìƒ‰ì´ë¼ë©´ ê²€ìƒ‰ë§Œ í•˜ê³  ì‹¶ë‹¤.
+                UpdateSearch(); //alt + enter ë©”ì†Œë“œ ìƒì„±
                 break;
             case State.Move:
-                //±×·¸Áö ¾Ê°í »óÅÂ°¡ ÀÌµ¿ÀÌ¶ó¸é ÀÌµ¿¸¸ ÇÏ°í ½Í´Ù.
+                //ê·¸ë ‡ì§€ ì•Šê³  ìƒíƒœê°€ ì´ë™ì´ë¼ë©´ ì´ë™ë§Œ í•˜ê³  ì‹¶ë‹¤.
                 UpdateMove();
                 break;
             case State.Attack:
-                //±×·¸Áö ¾Ê°í »óÅÂ°¡ °ø°İÀÌ¶ó¸é °ø°İ¸¸ ÇÏ°í ½Í´Ù.
+                //ê·¸ë ‡ì§€ ì•Šê³  ìƒíƒœê°€ ê³µê²©ì´ë¼ë©´ ê³µê²©ë§Œ í•˜ê³  ì‹¶ë‹¤.
                 UpdateAttack();
                 break;
         }
@@ -61,77 +78,87 @@ public class Enemy : MonoBehaviour
 
     private void UpdateAttack()
     {
-        //¸¸¾à ¸ñÀûÁö¿ÍÀÇ °Å¸®°¡ °ø°İ°¡´É°Å¸®°¡ ¾Æ´Ï¶ó¸é?
-        //´Ù½Ã ÀÌµ¿»óÅÂ·Î ÀüÀÌÇÏ°í ½Í´Ù.
+        //ë§Œì•½ ëª©ì ì§€ì™€ì˜ ê±°ë¦¬ê°€ ê³µê²©ê°€ëŠ¥ê±°ë¦¬ê°€ ì•„ë‹ˆë¼ë©´?
+        //ë‹¤ì‹œ ì´ë™ìƒíƒœë¡œ ì „ì´í•˜ê³  ì‹¶ë‹¤.
     }
 
     private void UpdateMove()
     {
-        //agnet¿¡°Ô ¸ñÀûÁö¸¦ °è¼Ó ¾Ë·ÁÁÖ°í ½Í´Ù.(±æ Ã£±â ½ÇÇà)
+        //agnetì—ê²Œ ëª©ì ì§€ë¥¼ ê³„ì† ì•Œë ¤ì£¼ê³  ì‹¶ë‹¤.(ê¸¸ ì°¾ê¸° ì‹¤í–‰)
         agent.destination = target.transform.position;
-        //¸¸¾à ¸ñÀûÁö¿ÍÀÇ °Å¸®°¡ °ø°İ°¡´É°Å¸®¶ó¸é?
-        distance = Vector3.Distance(transform.position, target.transform.position); //µÎ Æ÷ÀÎÆ® °£ÀÇ °Å¸®
+        //ë§Œì•½ ëª©ì ì§€ì™€ì˜ ê±°ë¦¬ê°€ ê³µê²©ê°€ëŠ¥ê±°ë¦¬ë¼ë©´?
+        distance = Vector3.Distance(transform.position, target.transform.position); //ë‘ í¬ì¸íŠ¸ ê°„ì˜ ê±°ë¦¬
         if (distance <= agent.stoppingDistance)
         {
-            //°ø°İ»óÅÂ·Î ÀüÀÌÇÏ°í ½Í´Ù.
-            state = State.Attack;
-            anim.SetTrigger("Attack");
+            //ê³µê²©ìƒíƒœë¡œ ì „ì´í•˜ê³  ì‹¶ë‹¤.
+            // state = State.Attack;
+            // anim.SetTrigger("Attack");
+            setState(State.Attack, "Attack");
         }
     }
 
     private void UpdateSearch()
     {
-        //¸ñÀûÁö¸¦ Ã£°í½Í´Ù.
+        //ëª©ì ì§€ë¥¼ ì°¾ê³ ì‹¶ë‹¤.
         target = GameObject.Find("Player");
-        //¸¸¾à ¸ñÀûÁö¸¦ Ã£¾ÒÀ¸¸é 
+        //ë§Œì•½ ëª©ì ì§€ë¥¼ ì°¾ì•˜ìœ¼ë©´ 
         if (target != null)
         {
-            //ÀÌµ¿»óÅÂ·Î ÀüÀÌÇÏ°í ½Í´Ù.
-            state = State.Move;
-            anim.SetTrigger("Move");
+            //ì´ë™ìƒíƒœë¡œ ì „ì´í•˜ê³  ì‹¶ë‹¤.
+            // state = State.Move;
+            // anim.SetTrigger("Move");
+            setState(State.Move, "Move");
         }
 
     }
     internal void OnEnemyAttackHit()
     {
-        distance = Vector3.Distance(transform.position, target.transform.position); //µÎ Æ÷ÀÎÆ® °£ÀÇ °Å¸®
-        
-        //¸¸¾à °ø°İ°¡´É ¹üÀ§¶ó¸é Hit¸¦ ÇÏ°í ½Í´Ù.
+        distance = Vector3.Distance(transform.position, target.transform.position); //ë‘ í¬ì¸íŠ¸ ê°„ì˜ ê±°ë¦¬
+
+        //ë§Œì•½ ê³µê²©ê°€ëŠ¥ ë²”ìœ„ë¼ë©´ Hitë¥¼ í•˜ê³  ì‹¶ë‹¤.
         if (distance <= agent.stoppingDistance)
         {
-            print("Hit¸¦ ÇÏ°í ½Í´Ù.");
+            print("Hitë¥¼ í•˜ê³  ì‹¶ë‹¤.");
             HitManager.instance.DoHitPlz();
+            PlayerHP php = target.GetComponent<PlayerHP>();
+            php.HP--;
+            if (php.HP < 0)
+            {
+                //ê²Œì„ì˜¤ë²„
+            }
         }
         else
         {
-            //ÀÌµ¿»óÅÂ·Î ÀüÀÌÇÏ°í ½Í´Ù.
-            state = State.Move;
-            anim.SetTrigger("Move");
-            print("ÀÌµ¿»óÅÂ·Î ÀüÀÌÇÏ°í ½Í´Ù.");
+            //ì´ë™ìƒíƒœë¡œ ì „ì´í•˜ê³  ì‹¶ë‹¤.
+            // state = State.Move;
+            // anim.SetTrigger("Move");
+            setState(State.Move, "Move");
+            print("ì´ë™ìƒíƒœë¡œ ì „ì´í•˜ê³  ì‹¶ë‹¤.");
         }
     }
 
- 
+
 
     internal void OnEnemyAttackFinished()
     {
-        distance = Vector3.Distance(transform.position, target.transform.position); //µÎ Æ÷ÀÎÆ® °£ÀÇ °Å¸®
-        //¸¸¾à °ø°İ°¡´É ¹üÀ§°¡ ¾Æ´Ï¶ó¸é
+        distance = Vector3.Distance(transform.position, target.transform.position); //ë‘ í¬ì¸íŠ¸ ê°„ì˜ ê±°ë¦¬
+        //ë§Œì•½ ê³µê²©ê°€ëŠ¥ ë²”ìœ„ê°€ ì•„ë‹ˆë¼ë©´
         if (distance > agent.stoppingDistance)
         {
-            //ÀÌµ¿»óÅÂ·Î ÀüÀÌÇÏ°í ½Í´Ù.
-            state = State.Move;
-            anim.SetTrigger("Move");
-            print("ÀÌµ¿»óÅÂ·Î ÀüÀÌÇÏ°í ½Í´Ù.");
+            //ì´ë™ìƒíƒœë¡œ ì „ì´í•˜ê³  ì‹¶ë‹¤.
+            // state = State.Move;
+            // anim.SetTrigger("Move");
+            setState(State.Move, "Move");
+            print("ì´ë™ìƒíƒœë¡œ ì „ì´í•˜ê³  ì‹¶ë‹¤.");
         }
     }
     /// <summary>
-    /// Player -> Enemy¸¦ °ø°İÇÔ.
+    /// Player -> Enemyë¥¼ ê³µê²©í•¨.
     /// </summary>
     bool isdead;
     public void TryDamage(int damageValue)
     {
-        //Ã¼·ÂÀÌ ÀÌ¹Ì 0ÀÌÇÏ¶ó¸é ÇÔ¼ö¸¦ ¹Ù·Î Á¾·áÇÏ°í ½Í´Ù.
+        //ì²´ë ¥ì´ ì´ë¯¸ 0ì´í•˜ë¼ë©´ í•¨ìˆ˜ë¥¼ ë°”ë¡œ ì¢…ë£Œí•˜ê³  ì‹¶ë‹¤.
         //if (enemyHP.HP <= 0)
         //{
         //    return;
@@ -140,39 +167,60 @@ public class Enemy : MonoBehaviour
         {
             return;
         }
-        //enemyHP¸¦ ½Ì±ÛÅæÀ¸·Î »ç¿ëÇÏ¸é ¾È µÇ´Â ÀÌÀ¯ : ½Ì±ÛÅæÀº ¾À¿¡¼­ ´Ü ÇÏ³ªÀÇ ¿ÀºêÁ§Æ®¿¡ ÄÄÆ÷³ÍÆ®°¡ Àû¿ëµÉ ¶§¸¸ »ç¿ë. enemy°¡ ¿©·¯ °³ »ı±æ °æ¿ì Á¦ÀÏ ¸¶Áö¸· ¿ÀºêÁ§Æ®¿¡¸¸ ½Ì±ÛÅæ °ªÀÌ Àû¿ëµÇ±â ¶§¹®¿¡.
+        //enemyHPë¥¼ ì‹±ê¸€í†¤ìœ¼ë¡œ ì‚¬ìš©í•˜ë©´ ì•ˆ ë˜ëŠ” ì´ìœ  : ì‹±ê¸€í†¤ì€ ì”¬ì—ì„œ ë‹¨ í•˜ë‚˜ì˜ ì˜¤ë¸Œì íŠ¸ì— ì»´í¬ë„ŒíŠ¸ê°€ ì ìš©ë  ë•Œë§Œ ì‚¬ìš©. enemyê°€ ì—¬ëŸ¬ ê°œ ìƒê¸¸ ê²½ìš° ì œì¼ ë§ˆì§€ë§‰ ì˜¤ë¸Œì íŠ¸ì—ë§Œ ì‹±ê¸€í†¤ ê°’ì´ ì ìš©ë˜ê¸° ë•Œë¬¸ì—.
         enemyHP.HP -= damageValue;
-        //µ¥¹ÌÁö¸¦ ÀÔ¾úÀ» ¶§ ÃßÀû±â´ÉÀ» ¸ØÃß°í ½Í´Ù.
+        //ë°ë¯¸ì§€ë¥¼ ì…ì—ˆì„ ë•Œ ì¶”ì ê¸°ëŠ¥ì„ ë©ˆì¶”ê³  ì‹¶ë‹¤.
         agent.isStopped = true;
 
         if (enemyHP.HP <= 0)
         {
             isdead = true;
-            //Á×À½
-            //¾Ö´Ï¸ŞÀÌ¼Ç ÀÌº¥Æ®
-            state = State.Death;
-            anim.SetTrigger("Death");
-            //GetComponent<Collider>().enabled = false; //Äİ¶óÀÌ´õ¸¦ ¹«È¿È­½ÃÄÑ Åõ¸íÀÎ°£ Ãë±Ş
+            //ì£½ìŒ
+            //ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸
+            // state = State.Death;
+            // anim.SetTrigger("Death");
+            setState(State.Death, "Death");
+            //GetComponent<Collider>().enabled = false; //ì½œë¼ì´ë”ë¥¼ ë¬´íš¨í™”ì‹œì¼œ íˆ¬ëª…ì¸ê°„ ì·¨ê¸‰
         }
         else
         {
-            //ÈÖÃ»
-            state = State.React;
-            anim.SetTrigger("React");
+            //íœ˜ì²­
+            // state = State.React;
+            // anim.SetTrigger("React");
+            setState(State.React, "React");
         }
+        for (int i = 0; i < rendList.Length; i++)
+        {
+            StartCoroutine("IERed", i);
+        }
+    }
+    //ì´ì— ë§ìœ¼ë©´ 0.1ì´ˆ ë™ì•ˆ Mat_red ì¬ì§ˆë¡œ ë°”ê¾¸ê³  ì‹¶ë‹¤.
+    IEnumerator IERed(int index)
+    {
+        SkinnedMeshRenderer rend = rendList[index];
+        Material mat = rend.material;
+        rend.material = matRed;
+        yield return new WaitForSeconds(0.1f);
+        rend.material = mat;
     }
     internal void OnEnemyReactFinished()
     {
-        //¸®¾×¼Ç ¾Ö´Ï¸ŞÀÌ¼ÇÀÌ Á¾·áµÇ´Â ¼ø°£ ÀÌµ¿»óÅÂ·Î ÀüÀÌÇÏ°í ½Í´Ù.
-        state = State.Move;
-        anim.SetTrigger("Move");
-        //¸®¾×¼Ç ¾Ö´Ï¸ŞÀÌ¼ÇÀÌ Á¾·áµÇ°í ³ª¼­´Â ´Ù½Ã ÃßÀû±â´ÉÀ» È°¼ºÈ­½ÃÅ°°í ½Í´Ù.
+        // if (state == State.Death){return} //ë‹¤ìŒ ëª¨ì…˜ì´ ì”¹íˆëŠ” í˜„ìƒ ë°©ì§€
+        if (state != State.React)
+        {
+            return;
+        }
+        //ë¦¬ì•¡ì…˜ ì• ë‹ˆë©”ì´ì…˜ì´ ì¢…ë£Œë˜ëŠ” ìˆœê°„ ì´ë™ìƒíƒœë¡œ ì „ì´í•˜ê³  ì‹¶ë‹¤.
+        // state = State.Move;
+        // anim.SetTrigger("Move");
+        setState(State.Move, "Move");
+        //ë¦¬ì•¡ì…˜ ì• ë‹ˆë©”ì´ì…˜ì´ ì¢…ë£Œë˜ê³  ë‚˜ì„œëŠ” ë‹¤ì‹œ ì¶”ì ê¸°ëŠ¥ì„ í™œì„±í™”ì‹œí‚¤ê³  ì‹¶ë‹¤.
         agent.isStopped = false;
     }
 
     internal void OnEnemyDeathFinished()
     {
-        //Á×À½ ¾Ö´Ï¸ŞÀÌ¼ÇÀÌ Á¾·áµÇ´Â ¼ø°£ ÀÚ±âÀÚ½ÅÀ» ÆÄ±«ÇÏ°í ½Í´Ù.
+        //ì£½ìŒ ì• ë‹ˆë©”ì´ì…˜ì´ ì¢…ë£Œë˜ëŠ” ìˆœê°„ ìê¸°ìì‹ ì„ íŒŒê´´í•˜ê³  ì‹¶ë‹¤.
         Destroy(gameObject);
     }
 }

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,7 +21,7 @@ public class EnemyHP : MonoBehaviour
     }
     void Start()
     {
-        //ÅÂ¾î³¯ ¶§ Ã¼·ÂÀ» ÃÖ´ëÃ¼·ÂÀ¸·Î ÇÏ°í½Í´Ù.
+        //íƒœì–´ë‚  ë•Œ ì²´ë ¥ì„ ìµœëŒ€ì²´ë ¥ìœ¼ë¡œ í•˜ê³ ì‹¶ë‹¤.
         sliderHP.maxValue = maxHP;
         HP = maxHP;
     }

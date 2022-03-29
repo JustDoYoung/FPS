@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,27 +9,27 @@ public class EnemyAnimEvent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemy = GetComponentInParent<Enemy>(); //³ªÀÇ ºÎ¸ğ¿¡°Ô ÀÖ´Â Enemy ÄÄÆ÷³ÍÆ®¸¦ °¡Á®¿À°í ½Í´Ù.
+        enemy = GetComponentInParent<Enemy>(); //ë‚˜ì˜ ë¶€ëª¨ì—ê²Œ ìˆëŠ” Enemy ì»´í¬ë„ŒíŠ¸ë¥¼ ê°€ì ¸ì˜¤ê³  ì‹¶ë‹¤.
     }
 
     public void OnEnemyAttackHit()
     {
-        //°ø°İ Hit°¡ µÇ´Â ¼ø°£
-        enemy.OnEnemyAttackHit(); //alt + enter ¸Ş¼Òµå »ı¼º, Enemy¾ß Áö±İÀÌ¾ß
+        //ê³µê²© Hitê°€ ë˜ëŠ” ìˆœê°„
+        enemy.OnEnemyAttackHit(); //alt + enter ë©”ì†Œë“œ ìƒì„±, Enemyì•¼ ì§€ê¸ˆì´ì•¼
     }
     public void OnEnemyAttackFinished()
     {
-        //°ø°İ ¾Ö´Ï¸ŞÀÌ¼ÇÀÌ Á¾·áµÇ´Â ¼ø°£
+        //ê³µê²© ì• ë‹ˆë©”ì´ì…˜ì´ ì¢…ë£Œë˜ëŠ” ìˆœê°„
         enemy.OnEnemyAttackFinished();
     }
     public void OnEnemyReactFinished()
     {
-        //¸®¾×¼Ç ¾Ö´Ï¸ŞÀÌ¼ÇÀÌ Á¾·áµÇ´Â ¼ø°£
+        //ë¦¬ì•¡ì…˜ ì• ë‹ˆë©”ì´ì…˜ì´ ì¢…ë£Œë˜ëŠ” ìˆœê°„
         enemy.OnEnemyReactFinished();
     }
     public void OnEnemyDeathFinished()
     {
-        //µ¥½º ¾Ö´Ï¸ŞÀÌ¼ÇÀÌ Á¾·áµÇ´Â ¼ø°£
+        //ë°ìŠ¤ ì• ë‹ˆë©”ì´ì…˜ì´ ì¢…ë£Œë˜ëŠ” ìˆœê°„
         enemy.OnEnemyDeathFinished();
     }
 }

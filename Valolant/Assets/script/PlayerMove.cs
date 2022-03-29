@@ -1,8 +1,8 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Á¡ÇÁ¸¦ ¶Ù°í½Í´Ù.(power, velocity, gravity)
+//ì í”„ë¥¼ ë›°ê³ ì‹¶ë‹¤.(power, velocity, gravity)
 public class PlayerMove : MonoBehaviour
 {
     CharacterController cc;
@@ -17,7 +17,7 @@ public class PlayerMove : MonoBehaviour
     public float jumpPower = 10;
     public float gravity = -9.81f;
     float yVelocity;
-    int jumpCount; //´ÙÁß Á¡ÇÁ ¶Ù°í ½Í´Ù.
+    int jumpCount; //ë‹¤ì¤‘ ì í”„ ë›°ê³  ì‹¶ë‹¤.
     public int maxJumpCount = 2;
     private void Awake()
     {
@@ -26,20 +26,20 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         
-        //if ((cc.collisionFlags & CollisionFlags.Below) != 0) //ºñÆ®¸¶½ºÅ© : Above³ª Side´Â µû·Î ÇÔ¼ö°¡ ¾ø±â ¶§¹®¿¡ ºñÆ®¸¶½ºÅ©·Î ½á¾ßÇÔ.
+        //if ((cc.collisionFlags & CollisionFlags.Below) != 0) //ë¹„íŠ¸ë§ˆìŠ¤í¬ : Aboveë‚˜ SideëŠ” ë”°ë¡œ í•¨ìˆ˜ê°€ ì—†ê¸° ë•Œë¬¸ì— ë¹„íŠ¸ë§ˆìŠ¤í¬ë¡œ ì¨ì•¼í•¨.
         if (cc.isGrounded)
         {
-            //¶¥¿¡ ¼­ ÀÖ´Ù¸é Á¡ÇÁ È½¼ö¸¦ 0À¸·Î ÃÊ±âÈ­ÇÏ°í ½Í´Ù.
+            //ë•…ì— ì„œ ìˆë‹¤ë©´ ì í”„ íšŸìˆ˜ë¥¼ 0ìœ¼ë¡œ ì´ˆê¸°í™”í•˜ê³  ì‹¶ë‹¤.
             jumpCount = 0;
         }
         else {
-            //¸¸¾à °øÁßÀÌ¶ó¸é
-            //1. y¼Óµµ´Â Áß·ÂÀ» °è¼Ó ¹Ş¾Æ¾ß ÇÑ´Ù.
+            //ë§Œì•½ ê³µì¤‘ì´ë¼ë©´
+            //1. yì†ë„ëŠ” ì¤‘ë ¥ì„ ê³„ì† ë°›ì•„ì•¼ í•œë‹¤.
             yVelocity += gravity * Time.deltaTime;
         }
-        //yVelocity¸¦ 0À¸·Î ÇÏ°í ½Í´Ù.
+        //yVelocityë¥¼ 0ìœ¼ë¡œ í•˜ê³  ì‹¶ë‹¤.
 
-        //2. ¸¸¾à Á¡ÇÁÈ½¼ö°¡ ÃÖ´ëÁ¡ÇÁÈ¸¼öº¸´Ù ÀÛ°í Á¡ÇÁÅ°¸¦ ´©¸£¸é y¼Óµµ¸¦ jumpPower·Î ´ëÀÔÇÏ°í ½Í´Ù.
+        //2. ë§Œì•½ ì í”„íšŸìˆ˜ê°€ ìµœëŒ€ì í”„íšŒìˆ˜ë³´ë‹¤ ì‘ê³  ì í”„í‚¤ë¥¼ ëˆ„ë¥´ë©´ yì†ë„ë¥¼ jumpPowerë¡œ ëŒ€ì…í•˜ê³  ì‹¶ë‹¤.
         if ((jumpCount < maxJumpCount) && Input.GetButtonDown("Jump"))
         {
             yVelocity = jumpPower;
@@ -50,20 +50,20 @@ public class PlayerMove : MonoBehaviour
         float v = Input.GetAxis("Vertical");
         Vector3 dir = new Vector3(h, 0, v);
 
-        //¹æÇâÃàÀ» Ä«¸Ş¶ó¸¦ ±âÁØÀ¸·Î dir¸¦ º¯°æÇÏ°í ½Í´Ù.***
+        //ë°©í–¥ì¶•ì„ ì¹´ë©”ë¼ë¥¼ ê¸°ì¤€ìœ¼ë¡œ dirë¥¼ ë³€ê²½í•˜ê³  ì‹¶ë‹¤.***
         dir = Camera.main.transform.TransformDirection(dir);
         dir.y = 0;
-        dir.Normalize(); //¿øº»ÀÇ Å©±â¸¦ 1·Î cf)dir.normalized : º¹»çº»À» ¸¸µé¾î¼­ 1·Î ¹Ù²Û ´ÙÀ½ ¹İÈ¯.
+        dir.Normalize(); //ì›ë³¸ì˜ í¬ê¸°ë¥¼ 1ë¡œ cf)dir.normalized : ë³µì‚¬ë³¸ì„ ë§Œë“¤ì–´ì„œ 1ë¡œ ë°”ê¾¼ ë‹¤ìŒ ë°˜í™˜.
         Vector3 velocity = dir * speed;
         
-        //3. ÀÌµ¿¹æÇâÀÇ y¼Ó¼º¿¡ y¼Óµµ¸¦ ´ëÀÔÇÏ°í ½Í´Ù.
+        //3. ì´ë™ë°©í–¥ì˜ yì†ì„±ì— yì†ë„ë¥¼ ëŒ€ì…í•˜ê³  ì‹¶ë‹¤.
         velocity.y = yVelocity;
 
         //transform.position += dir * speed * Time.deltaTime;
-        cc.Move(velocity * Time.deltaTime); //°¥ ¼ö ÀÖ´Â ¸¸Å­¸¸ °¡°í ¸ØÃá´Ù.
+        cc.Move(velocity * Time.deltaTime); //ê°ˆ ìˆ˜ ìˆëŠ” ë§Œí¼ë§Œ ê°€ê³  ë©ˆì¶˜ë‹¤.
     }
 
-    //Á¡ÇÁ ÀÌÇØ
+    //ì í”„ ì´í•´
     //private void OnDrawGizmos()
     //{
     //    Gizmos.color = Color.red;

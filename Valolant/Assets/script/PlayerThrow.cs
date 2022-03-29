@@ -1,9 +1,9 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//»ç¿ëÀÚ°¡ GÅ°¸¦ ´©¸£¸é °øÀå¿¡¼­ ÆøÅºÀ» ¸¸µé¾î¼­ ³» À§Ä¡¿¡ ¹èÄ¡ÇÏ°í ½Í´Ù.
-//ÆøÅºÀÇ ¾Õ¹æÇâÀ» ³»°¡ ´øÁö°íÀÚ ÇÏ´Â ¹æÇâ(grenadeThrowPosition)À¸·Î È¸Àü½ÃÅ°°í ½Í´Ù.(³» ±âÁØ 50µµ ¹æÇâ)
+//ì‚¬ìš©ìê°€ Gí‚¤ë¥¼ ëˆ„ë¥´ë©´ ê³µì¥ì—ì„œ í­íƒ„ì„ ë§Œë“¤ì–´ì„œ ë‚´ ìœ„ì¹˜ì— ë°°ì¹˜í•˜ê³  ì‹¶ë‹¤.
+//í­íƒ„ì˜ ì•ë°©í–¥ì„ ë‚´ê°€ ë˜ì§€ê³ ì í•˜ëŠ” ë°©í–¥(grenadeThrowPosition)ìœ¼ë¡œ íšŒì „ì‹œí‚¤ê³  ì‹¶ë‹¤.(ë‚´ ê¸°ì¤€ 50ë„ ë°©í–¥)
 //
 public class PlayerThrow : MonoBehaviour
 {
@@ -13,22 +13,22 @@ public class PlayerThrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //»ç¿ëÀÚ°¡ GÅ°¸¦ ´©¸£¸é
+        //ì‚¬ìš©ìê°€ Gí‚¤ë¥¼ ëˆ„ë¥´ë©´
         if (Input.GetKeyDown(KeyCode.G))
         {
-        //°øÀå¿¡¼­ ÆøÅºÀ» ¸¸µé¾î¼­
+        //ê³µì¥ì—ì„œ í­íƒ„ì„ ë§Œë“¤ì–´ì„œ
             GameObject grenade = Instantiate(grenadeFactory);
-        //³» À§Ä¡¿¡ ¹èÄ¡ÇÏ°í ½Í´Ù.
+        //ë‚´ ìœ„ì¹˜ì— ë°°ì¹˜í•˜ê³  ì‹¶ë‹¤.
             grenade.transform.position = grenadeThrowPosition.position;
-            //ÆøÅºÀÇ ¾Õ¹æÇâÀ» ³»°¡ ´øÁö°íÀÚ ÇÏ´Â ¹æÇâÀ¸·Î È¸Àü½ÃÅ°°í ½Í´Ù.(³» ±âÁØ 45µµ ¹æÇâ)
-            //Vector3 dir = transform.forward + transform.up; //³» ±âÁØ 45µµ ¹æÇâ
+            //í­íƒ„ì˜ ì•ë°©í–¥ì„ ë‚´ê°€ ë˜ì§€ê³ ì í•˜ëŠ” ë°©í–¥ìœ¼ë¡œ íšŒì „ì‹œí‚¤ê³  ì‹¶ë‹¤.(ë‚´ ê¸°ì¤€ 45ë„ ë°©í–¥)
+            //Vector3 dir = transform.forward + transform.up; //ë‚´ ê¸°ì¤€ 45ë„ ë°©í–¥
             //grenade.transform.foward = dir;
 
-            //ÆøÅºÀÇ ¾Õ¹æÇâÀ» ³»°¡ ´øÁö°íÀÚ ÇÏ´Â ¹æÇâÀ¸·Î È¸Àü½ÃÅ°°í ½Í´Ù.(³» ±âÁØ 50µµ ¹æÇâ)
-            //Quaternion q = grenadeThrowPosition.rotation * Quaternion.Euler(-50, 0, 0); //±âÁØÀÇ È¸ÀüÁÂÇ¥ * Quaternion.Euler(È¸Àü°¢)
+            //í­íƒ„ì˜ ì•ë°©í–¥ì„ ë‚´ê°€ ë˜ì§€ê³ ì í•˜ëŠ” ë°©í–¥ìœ¼ë¡œ íšŒì „ì‹œí‚¤ê³  ì‹¶ë‹¤.(ë‚´ ê¸°ì¤€ 50ë„ ë°©í–¥)
+            //Quaternion q = grenadeThrowPosition.rotation * Quaternion.Euler(-50, 0, 0); //ê¸°ì¤€ì˜ íšŒì „ì¢Œí‘œ * Quaternion.Euler(íšŒì „ê°)
             //grenade.transform.rotation = q;
 
-            grenade.transform.forward = grenadeThrowPosition.forward; //ÀÏ¹İÀûÀÎ FPS
+            grenade.transform.forward = grenadeThrowPosition.forward; //ì¼ë°˜ì ì¸ FPS
         }
     }
 }

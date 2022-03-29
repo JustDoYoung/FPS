@@ -1,17 +1,17 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
-//È­¸éÀ» ¹øÂ½°Å¸®°Ô ÇÏ°í ½Í´Ù.
-//ImageHit ¿ÀºêÁ§Æ®¸¦ º¸¿´´Ù°¡ 0.1ÃÊ ÈÄ¿¡ ¾È º¸ÀÌ°Ô ÇÏ°í ½Í´Ù.
+//í™”ë©´ì„ ë²ˆì©ê±°ë¦¬ê²Œ í•˜ê³  ì‹¶ë‹¤.
+//ImageHit ì˜¤ë¸Œì íŠ¸ë¥¼ ë³´ì˜€ë‹¤ê°€ 0.1ì´ˆ í›„ì— ì•ˆ ë³´ì´ê²Œ í•˜ê³  ì‹¶ë‹¤.
 public class HitManager : MonoBehaviour
 {
-    public static HitManager instance; //static : instance º¯¼ö´Â class ScoreManagerÀÇ °Í! °´Ã¼ÀÇ °ÍÀÌ ¾Æ´Ô
+    public static HitManager instance; //static : instance ë³€ìˆ˜ëŠ” class ScoreManagerì˜ ê²ƒ! ê°ì²´ì˜ ê²ƒì´ ì•„ë‹˜
 
     private void Awake()
     {
-        HitManager.instance = this; //class·Î ¸¸µé¾îÁø °´Ã¼°¡ ÀÚ±âÀÚ½ÅÀ» ºÎ¸¦ ¶§ : this
+        HitManager.instance = this; //classë¡œ ë§Œë“¤ì–´ì§„ ê°ì²´ê°€ ìê¸°ìì‹ ì„ ë¶€ë¥¼ ë•Œ : this
     }
 
     public GameObject imageHit;
@@ -28,10 +28,10 @@ public class HitManager : MonoBehaviour
 
     IEnumerator IEDoHit()
     {
-        //º¸ÀÌ°Ô ÇÑ´Ù.
+        //ë³´ì´ê²Œ í•œë‹¤.
         imageHit.SetActive(true);
         yield return new WaitForSeconds(0.1f);
-        //¾È º¸ÀÌ°Ô ÇÑ´Ù.
+        //ì•ˆ ë³´ì´ê²Œ í•œë‹¤.
         imageHit.SetActive(false);
         yield return new WaitForSeconds(0.1f);
     }

@@ -211,6 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 6412811967000499535}
+  matRed: {fileID: 2100000, guid: 8594fcd5a81d85f4cb0b4b99204da566, type: 2}
 --- !u!114 &6412811965350602262
 MonoBehaviour:
   m_ObjectHideFlags: 0

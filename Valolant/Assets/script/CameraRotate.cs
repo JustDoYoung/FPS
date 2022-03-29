@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,16 +20,16 @@ public class CameraRotate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //1. »ç¿ëÀÚ°¡ ¸¶¿ì½º¸¦ ¿òÁ÷ÀÌ¸é
-        float mx = Input.GetAxis("Mouse X"); //¸¶¿ì½º ¿òÁ÷ÀÓÀÇ º¯È­·®
+        //1. ì‚¬ìš©ìê°€ ë§ˆìš°ìŠ¤ë¥¼ ì›€ì§ì´ë©´
+        float mx = Input.GetAxis("Mouse X"); //ë§ˆìš°ìŠ¤ ì›€ì§ì„ì˜ ë³€í™”ëŸ‰
         float my = Input.GetAxis("Mouse Y");
 
-        rx += rotSpeed * my * Time.deltaTime; //º¯È­·®¿¡ µû¸¥ È¸Àü°¢µµ(¸¶¿ì½º °¨µµ)
+        rx += rotSpeed * my * Time.deltaTime; //ë³€í™”ëŸ‰ì— ë”°ë¥¸ íšŒì „ê°ë„(ë§ˆìš°ìŠ¤ ê°ë„)
         ry += rotSpeed * mx * Time.deltaTime;
 
-        rx = Mathf.Clamp(rx, -70, 70); //(value, min, max) : valueÀÇ °ªÀº min°ú max »çÀÌ·Î Á¦ÇÑÇÑ´Ù.
+        rx = Mathf.Clamp(rx, -70, 70); //(value, min, max) : valueì˜ ê°’ì€ minê³¼ max ì‚¬ì´ë¡œ ì œí•œí•œë‹¤.
 
-        //2. Ä«¸Ş¶ó¸¦ È¸ÀüÇÏ°í ½Í´Ù.
+        //2. ì¹´ë©”ë¼ë¥¼ íšŒì „í•˜ê³  ì‹¶ë‹¤.
         transform.eulerAngles = new Vector3(-rx, ry, 0); //degree
     }
 }

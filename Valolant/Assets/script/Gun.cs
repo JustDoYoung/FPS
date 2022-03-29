@@ -1,11 +1,11 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//¸¸¾à ¸¶¿ì½º ¿ŞÂÊ ¹öÆ°À» ´©¸£¸é
-//¹Ù¶óº» °÷¿¡ ÃÑ¾ËÀÚ±¹À» ³²±â°í ½Í´Ù.
-//¹Ù¶óº» °÷ : ¸ŞÀÎ Ä«¸Ş¶ó
+//ë§Œì•½ ë§ˆìš°ìŠ¤ ì™¼ìª½ ë²„íŠ¼ì„ ëˆ„ë¥´ë©´
+//ë°”ë¼ë³¸ ê³³ì— ì´ì•Œìêµ­ì„ ë‚¨ê¸°ê³  ì‹¶ë‹¤.
+//ë°”ë¼ë³¸ ê³³ : ë©”ì¸ ì¹´ë©”ë¼
 public class Gun : MonoBehaviour
 {
     public GameObject bImpactFactory;
@@ -14,14 +14,14 @@ public class Gun : MonoBehaviour
     private void Awake()
     {
         Application.targetFrameRate = 40;
-        //°ÔÀÓºä¿¡¼­ Ä¿¼­°¡ ¾È º¸ÀÌ°Ô ÇÏ°í ½Í´Ù
+        //ê²Œì„ë·°ì—ì„œ ì»¤ì„œê°€ ì•ˆ ë³´ì´ê²Œ í•˜ê³  ì‹¶ë‹¤
         Cursor.visible = false;
-        //Ä¿¼­¸¦ Áß¾Ó¿¡ °íÁ¤ÇÏ°í ½Í´Ù.
+        //ì»¤ì„œë¥¼ ì¤‘ì•™ì— ê³ ì •í•˜ê³  ì‹¶ë‹¤.
         Cursor.lockState = CursorLockMode.Locked;
-        ////Ä¿¼­¸¦ À©µµ¿ì Ã¢ ¹ÛÀ¸·Î ¾È ³ª°¡°Ô ÇÏ°í ½Í´Ù.
+        ////ì»¤ì„œë¥¼ ìœˆë„ìš° ì°½ ë°–ìœ¼ë¡œ ì•ˆ ë‚˜ê°€ê²Œ í•˜ê³  ì‹¶ë‹¤.
         //Cursor.lockState = CursorLockMode.Confined;
 
-        //ÃÑÀÇ ÃÊ±â À§Ä¡
+        //ì´ì˜ ì´ˆê¸° ìœ„ì¹˜
         gunTargetPos = zoomOutPos.localPosition;
     }
 
@@ -41,44 +41,44 @@ public class Gun : MonoBehaviour
     Vector3 gunTargetPos;
     private void UpdateZoom()
     {
-        //¸¸¾à ¸¶¿ì½º ¿À¸¥ÂÊ ¹öÆ°À» ´©¸£°í ÀÖÀ¸¸é
+        //ë§Œì•½ ë§ˆìš°ìŠ¤ ì˜¤ë¥¸ìª½ ë²„íŠ¼ì„ ëˆ„ë¥´ê³  ìˆìœ¼ë©´
         if (Input.GetButton("Fire2"))
         {
-            //ZoomIn(È®´ë : 15¸¸Å­)À» ÇÏ°í ½Í´Ù.
+            //ZoomIn(í™•ëŒ€ : 15ë§Œí¼)ì„ í•˜ê³  ì‹¶ë‹¤.
             //Camera.main.fieldOfView = zoomInValue;
             targetZoomvalue = zoomInValue;
             gunTargetPos = zoomInPos.localPosition;
         }
         else if (Input.GetButtonUp("Fire2"))
         {
-            //±×·¸Áö ¾Ê°í ¶¼¸é ZoomOut(¿ø·¡´ë·Î)À» ÇÏ°í ½Í´Ù.
+            //ê·¸ë ‡ì§€ ì•Šê³  ë–¼ë©´ ZoomOut(ì›ë˜ëŒ€ë¡œ)ì„ í•˜ê³  ì‹¶ë‹¤.
             //targetZoomvalue = zoomOutValue;
             Camera.main.fieldOfView = zoomOutValue;
             targetZoomvalue = zoomOutValue;
             gunTargetPos = zoomOutPos.localPosition;
         }
-        Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, targetZoomvalue, Time.deltaTime * 20); //¼±Çüº¸°£ (½ÃÀÛ, ³¡, ½ÃÀÛ°ú ³¡ »çÀÌ), ÀÚ·áÇüÀÌ flaot¶ó¼­ MathfLerp
-        gunObject.transform.localPosition = Vector3.Lerp(gunObject.transform.localPosition, gunTargetPos, Time.deltaTime * 20); //ÀÚ·áÇüÀÌ Vector3¶ó¼­ Vector3.Lerp
+        Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, targetZoomvalue, Time.deltaTime * 20); //ì„ í˜•ë³´ê°„ (ì‹œì‘, ë, ì‹œì‘ê³¼ ë ì‚¬ì´), ìë£Œí˜•ì´ flaotë¼ì„œ MathfLerp
+        gunObject.transform.localPosition = Vector3.Lerp(gunObject.transform.localPosition, gunTargetPos, Time.deltaTime * 20); //ìë£Œí˜•ì´ Vector3ë¼ì„œ Vector3.Lerp
     }
 
     void UpdateFire()
     {
-        //¸¸¾à ¸¶¿ì½º ¿ŞÂÊ ¹öÆ°À» ´©¸£¸é
+        //ë§Œì•½ ë§ˆìš°ìŠ¤ ì™¼ìª½ ë²„íŠ¼ì„ ëˆ„ë¥´ë©´
         if (Input.GetButtonDown("Fire1"))
         {
-            //¹Ù¶óº» °÷¿¡ ÃÑ¾ËÀÚ±¹À» ³²±â°í ½Í´Ù.
-            //ÇÊ¿äÇÑ °Í : ½Ã¼±, ¹Ù¶óº¸´Ù, ´êÀº °÷ÀÇ Á¤º¸
-            //¸ŞÀÎ Ä«¸Ş¶óÀÇ À§Ä¡¿¡¼­ ¸ŞÀÎ Ä«¸Ş¶óÀÇ ¾Õ¹æÇâÀ¸·Î ½Ã¼±À» ¸¸µé°í ½Í´Ù.(¹İÁ÷¼±À¸·Î : ÇÑ ÂÊÀ¸·Î »¸¾î³ª°¡´Â Á÷¼±) - ÇÏ³ªÀÇ ±¸¹®(¾Ï±â)
-            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward); //(½ÃÀÛÁ¡, ¹æÇâ)
+            //ë°”ë¼ë³¸ ê³³ì— ì´ì•Œìêµ­ì„ ë‚¨ê¸°ê³  ì‹¶ë‹¤.
+            //í•„ìš”í•œ ê²ƒ : ì‹œì„ , ë°”ë¼ë³´ë‹¤, ë‹¿ì€ ê³³ì˜ ì •ë³´
+            //ë©”ì¸ ì¹´ë©”ë¼ì˜ ìœ„ì¹˜ì—ì„œ ë©”ì¸ ì¹´ë©”ë¼ì˜ ì•ë°©í–¥ìœ¼ë¡œ ì‹œì„ ì„ ë§Œë“¤ê³  ì‹¶ë‹¤.(ë°˜ì§ì„ ìœ¼ë¡œ : í•œ ìª½ìœ¼ë¡œ ë»—ì–´ë‚˜ê°€ëŠ” ì§ì„ ) - í•˜ë‚˜ì˜ êµ¬ë¬¸(ì•”ê¸°)
+            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward); //(ì‹œì‘ì , ë°©í–¥)
 
             RaycastHit hitInfo;
             if (Physics.Raycast(ray, out hitInfo))
             {
                 print(hitInfo.transform.name);
                 GameObject bImpact;
-                bool isEnemy = hitInfo.collider.CompareTag("Enemy"); //collier : Ãæµ¹µÇ´Â ÇØ´ç ¿ÀºêÁ§Æ®
-                //EnemyÀÏ ¶§´Â ±¸¸ÛÀÚ±¹ÀÌ ¾È »ı±â´Â ÇÁ¸®ÆÕÀ» ¾²°í
-                //Enemy°¡ ¾Æ´Ò ¶© ±¸¸ÛÀÚ±¹ÀÌ »ı±â´Â ÇÁ¸®ÆÕÀ» »ç¿ëÇÏ°í ½Í´Ù.
+                bool isEnemy = hitInfo.collider.CompareTag("Enemy"); //collier : ì¶©ëŒë˜ëŠ” í•´ë‹¹ ì˜¤ë¸Œì íŠ¸
+                //Enemyì¼ ë•ŒëŠ” êµ¬ë©ìêµ­ì´ ì•ˆ ìƒê¸°ëŠ” í”„ë¦¬íŒ¹ì„ ì“°ê³ 
+                //Enemyê°€ ì•„ë‹ ë• êµ¬ë©ìêµ­ì´ ìƒê¸°ëŠ” í”„ë¦¬íŒ¹ì„ ì‚¬ìš©í•˜ê³  ì‹¶ë‹¤.
                 if (isEnemy)
                 {
                     bImpact = Instantiate(bImpactForEnemyFactory);
@@ -87,18 +87,18 @@ public class Gun : MonoBehaviour
                 {
                     bImpact = Instantiate(bImpactFactory);
                 }
-                //»ïÇ×¿¬»êÀÚ·Î ÁÙÀÏ ¼ö ÀÖ´Ù.
+                //ì‚¼í•­ì—°ì‚°ìë¡œ ì¤„ì¼ ìˆ˜ ìˆë‹¤.
                 //bImpact = isEnemy ? Instantiate(bImpactForEnemyFactory) : Instantiate(bImpactFactory);
 
-                bImpact.transform.position = hitInfo.point; //½ÇÁ¦ ºÎµúÈù ÁöÁ¡. point
+                bImpact.transform.position = hitInfo.point; //ì‹¤ì œ ë¶€ë”ªíŒ ì§€ì . point
                 bImpact.transform.forward = hitInfo.normal;
 
                 if (isEnemy)
                 {
-                    //ÀûÀÇ Ã¼·ÂÀ» 1 ÁÙÀÌ°í ½Í´Ù.
-                    //Àû¿¡°Ô ÃÑ¿¡ ¸Â¾Ò¾î ¶ó°í ¾Ë·ÁÁÖ°í ½Í´Ù.
-                    //µ¥¹ÌÁö Å©±â¸¦ ¾Ë·ÁÁÖ°í ½Í´Ù.
-                    Enemy enemy = hitInfo.transform.GetComponent<Enemy>(); //transform : Rigidbody°¡ ÀÖ´Â ¿ÀºêÁ§Æ®
+                    //ì ì˜ ì²´ë ¥ì„ 1 ì¤„ì´ê³  ì‹¶ë‹¤.
+                    //ì ì—ê²Œ ì´ì— ë§ì•˜ì–´ ë¼ê³  ì•Œë ¤ì£¼ê³  ì‹¶ë‹¤.
+                    //ë°ë¯¸ì§€ í¬ê¸°ë¥¼ ì•Œë ¤ì£¼ê³  ì‹¶ë‹¤.
+                    Enemy enemy = hitInfo.transform.GetComponent<Enemy>(); //transform : Rigidbodyê°€ ìˆëŠ” ì˜¤ë¸Œì íŠ¸
                     enemy.TryDamage(1);
                 }
             }

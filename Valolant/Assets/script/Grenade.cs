@@ -1,9 +1,9 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//ÅÂ¾î³¯ ¶§ ÀÌµ¿ÇÒ ¼Óµµ¸¦ rigidbody¿¡°Ô ¾Ë·ÁÁÖ°í ½Í´Ù.
-//ÀÌµ¿¹æÇâÀº ³» ¾Õ¹æÇâ
+//íƒœì–´ë‚  ë•Œ ì´ë™í•  ì†ë„ë¥¼ rigidbodyì—ê²Œ ì•Œë ¤ì£¼ê³  ì‹¶ë‹¤.
+//ì´ë™ë°©í–¥ì€ ë‚´ ì•ë°©í–¥
 public class Grenade : MonoBehaviour
 {
     public float speed = 10;
@@ -20,7 +20,7 @@ public class Grenade : MonoBehaviour
     public GameObject explosionFactory;
     private void OnCollisionEnter(Collision collision)
     {
-        //¹İ°æ 3m ¾ÈÀÇ Àû¿¡°Ô µ¥¹ÌÁö¸¦ 3 ÁÖ°í ½Í´Ù.
+        //ë°˜ê²½ 3m ì•ˆì˜ ì ì—ê²Œ ë°ë¯¸ì§€ë¥¼ 3 ì£¼ê³  ì‹¶ë‹¤.
         Collider[] cols = Physics.OverlapSphere(transform.position, radius);
 
         for (int i = 0; i < cols.Length; i++)

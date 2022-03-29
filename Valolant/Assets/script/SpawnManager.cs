@@ -1,8 +1,8 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//½ºÆù ¸ñ·ÏÁß¿¡ ÀÓÀÇ·Î ÇÏ³ª¸¦ ¼±ÅÃÇØ¼­ ±× À§Ä¡¿¡ »ı¼ºÇÏ°í ½Í´Ù.
+//ìŠ¤í° ëª©ë¡ì¤‘ì— ì„ì˜ë¡œ í•˜ë‚˜ë¥¼ ì„ íƒí•´ì„œ ê·¸ ìœ„ì¹˜ì— ìƒì„±í•˜ê³  ì‹¶ë‹¤.
 public class SpawnManager : MonoBehaviour
 {
     float curTime;
@@ -10,38 +10,38 @@ public class SpawnManager : MonoBehaviour
     public GameObject enemyFactory;
     public float min = 1;
     public float max = 3;
-    public Transform[] spawnList; //½ºÆù ÁöÁ¡µéÀÇ ¸ñ·Ï
+    public Transform[] spawnList; //ìŠ¤í° ì§€ì ë“¤ì˜ ëª©ë¡
     int preRandomIndex = -1;
     void Start()
     {
-        //ÅÂ¾î³¯ ¶§ »ı¼º½Ã°£À» ·£´ıÀ¸·Î Á¤ÇÏ°í ½Í´Ù.
-        //»ı¼º½Ã°£ = ·£´ı(min, max)
+        //íƒœì–´ë‚  ë•Œ ìƒì„±ì‹œê°„ì„ ëœë¤ìœ¼ë¡œ ì •í•˜ê³  ì‹¶ë‹¤.
+        //ìƒì„±ì‹œê°„ = ëœë¤(min, max)
         createTime = Random.Range(min, max);
     }
 
     void Update()
     {
-        //1. ÇöÀç½Ã°£ÀÌ Èå¸£´Ù°¡ ÀÏÁ¤½Ã°£¸¶´Ù Àû°øÀå¿¡¼­ ÀûÀ» ¸¸µé¾î¼­ ³» À§Ä¡¿¡ ¹èÄ¡ÇÏ°í ½Í´Ù.
+        //1. í˜„ì¬ì‹œê°„ì´ íë¥´ë‹¤ê°€ ì¼ì •ì‹œê°„ë§ˆë‹¤ ì ê³µì¥ì—ì„œ ì ì„ ë§Œë“¤ì–´ì„œ ë‚´ ìœ„ì¹˜ì— ë°°ì¹˜í•˜ê³  ì‹¶ë‹¤.
         curTime += Time.deltaTime;
-        //2. ÇöÀç½Ã°£ÀÌ »ı¼º½Ã°£À» ÃÊ°úÇÏ¸é
+        //2. í˜„ì¬ì‹œê°„ì´ ìƒì„±ì‹œê°„ì„ ì´ˆê³¼í•˜ë©´
         if (curTime > createTime)
         {
-            //3, Àû°øÀå¿¡¼­ ÀûÀ» ¸¸µé¾î¼­
+            //3, ì ê³µì¥ì—ì„œ ì ì„ ë§Œë“¤ì–´ì„œ
             GameObject enemy = Instantiate(enemyFactory);
-            //4. ½ºÆù ¸ñ·Ï Áß¿¡ ·£´ıÇÑ À§Ä¡¿¡ ¹èÄ¡ÇÏ°í ½Í´Ù.
+            //4. ìŠ¤í° ëª©ë¡ ì¤‘ì— ëœë¤í•œ ìœ„ì¹˜ì— ë°°ì¹˜í•˜ê³  ì‹¶ë‹¤.
             int randomIndex = Random.Range(0, spawnList.Length);
-            //¸¸¾à randomIndex ¿Í preRandomIndex¿Í °°´Ù¸é
+            //ë§Œì•½ randomIndex ì™€ preRandomIndexì™€ ê°™ë‹¤ë©´
             if (randomIndex == preRandomIndex)
             {
-                //randomIndex¸¦ ´Ù½Ã Á¤ÇÏ°í ½Í´Ù.
+                //randomIndexë¥¼ ë‹¤ì‹œ ì •í•˜ê³  ì‹¶ë‹¤.
                 randomIndex = (randomIndex + 1) % spawnList.Length;
                 //randomIndex = Random.Range(0, spawnList.Length);
             }
             Vector3 pos = spawnList[randomIndex].position;
             enemy.transform.position = pos;
-            //5. ÇöÀç½Ã°£À» 0À¸·Î ÃÊ±âÈ­
+            //5. í˜„ì¬ì‹œê°„ì„ 0ìœ¼ë¡œ ì´ˆê¸°í™”
             curTime = 0;
-            //6. »ı¼º½Ã°£À» »ı¼º Á÷ÈÄ¿¡ ·£´ıÀ¸·Î Á¤ÇÏ°í ½Í´Ù.
+            //6. ìƒì„±ì‹œê°„ì„ ìƒì„± ì§í›„ì— ëœë¤ìœ¼ë¡œ ì •í•˜ê³  ì‹¶ë‹¤.
             createTime = Random.Range(min, max);
             preRandomIndex = randomIndex;
         }
