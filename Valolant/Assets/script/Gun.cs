@@ -34,19 +34,20 @@ public class Gun : MonoBehaviour
 
     public float zoomInValue = 15;
     public float zoomOutValue = 60;
-    float targetZoomvalue = 60;
+    float targetZoomvalue;
     public Transform zoomInPos;
     public Transform zoomOutPos;
     public GameObject gunObject;
     Vector3 gunTargetPos;
     private void UpdateZoom()
     {
-        //만약 마우스 오른쪽 버튼을 누르고 있으면
+        //만약 마우스 오른쪽 버튼을 "누르고 있으면"
         if (Input.GetButton("Fire2"))
         {
             //ZoomIn(확대 : 15만큼)을 하고 싶다.
             //Camera.main.fieldOfView = zoomInValue;
             targetZoomvalue = zoomInValue;
+            //총의 위치를 zommInPos의 위치로 하고 싶다.
             gunTargetPos = zoomInPos.localPosition;
         }
         else if (Input.GetButtonUp("Fire2"))
@@ -55,9 +56,10 @@ public class Gun : MonoBehaviour
             //targetZoomvalue = zoomOutValue;
             Camera.main.fieldOfView = zoomOutValue;
             targetZoomvalue = zoomOutValue;
+            //총의 위치를 zommOutPos의 위치로 하고 싶다.
             gunTargetPos = zoomOutPos.localPosition;
         }
-        Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, targetZoomvalue, Time.deltaTime * 20); //선형보간 (시작, 끝, 시작과 끝 사이), 자료형이 flaot라서 MathfLerp
+        Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, targetZoomvalue, Time.deltaTime * 20); //선형보간 (시작, 끝, 줄어드는 속도), 자료형이 flaot라서 MathfLerp
         gunObject.transform.localPosition = Vector3.Lerp(gunObject.transform.localPosition, gunTargetPos, Time.deltaTime * 20); //자료형이 Vector3라서 Vector3.Lerp
     }
 
@@ -98,7 +100,7 @@ public class Gun : MonoBehaviour
                     //적의 체력을 1 줄이고 싶다.
                     //적에게 총에 맞았어 라고 알려주고 싶다.
                     //데미지 크기를 알려주고 싶다.
-                    Enemy enemy = hitInfo.transform.GetComponent<Enemy>(); //transform : Rigidbody가 있는 오브젝트
+                    Enemy enemy = hitInfo.transform.GetComponent<Enemy>();
                     enemy.TryDamage(1);
                 }
             }

@@ -197,7 +197,7 @@ public class Enemy : MonoBehaviour
     //총에 맞으면 0.1초 동안 Mat_red 재질로 바꾸고 싶다.
     IEnumerator IERed(int index)
     {
-        SkinnedMeshRenderer rend = rendList[index];
+        SkinnedMeshRenderer rend = rendList[index]; //컴포넌트는 참조형식(원형 변형 가능)
         Material mat = rend.material;
         rend.material = matRed;
         yield return new WaitForSeconds(0.1f);
