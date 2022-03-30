@@ -156,6 +156,7 @@ public class Enemy : MonoBehaviour
     /// Player -> Enemy를 공격함.
     /// </summary>
     bool isdead;
+    bool isReact;
     public void TryDamage(int damageValue)
     {
         //체력이 이미 0이하라면 함수를 바로 종료하고 싶다.
@@ -163,7 +164,7 @@ public class Enemy : MonoBehaviour
         //{
         //    return;
         //}
-        if (isdead)
+        if (state == State.Death || state == State.React)
         {
             return;
         }
@@ -174,7 +175,6 @@ public class Enemy : MonoBehaviour
 
         if (enemyHP.HP <= 0)
         {
-            isdead = true;
             //죽음
             //애니메이션 이벤트
             // state = State.Death;
@@ -184,14 +184,15 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+
             //휘청
             // state = State.React;
             // anim.SetTrigger("React");
             setState(State.React, "React");
-        }
-        for (int i = 0; i < rendList.Length; i++)
-        {
-            StartCoroutine("IERed", i);
+            for (int i = 0; i < rendList.Length; i++)
+            {
+                StartCoroutine("IERed", i);
+            }
         }
     }
     //총에 맞으면 0.1초 동안 Mat_red 재질로 바꾸고 싶다.
@@ -220,6 +221,7 @@ public class Enemy : MonoBehaviour
 
     internal void OnEnemyDeathFinished()
     {
+        LevelManager.instance.KILLCOUNT++;
         //죽음 애니메이션이 종료되는 순간 자기자신을 파괴하고 싶다.
         Destroy(gameObject);
     }

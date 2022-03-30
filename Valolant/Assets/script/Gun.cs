@@ -21,6 +21,7 @@ public class Gun : MonoBehaviour
         ////커서를 윈도우 창 밖으로 안 나가게 하고 싶다.
         //Cursor.lockState = CursorLockMode.Confined;
 
+        targetZoomvalue = zoomOutValue;
         //총의 초기 위치
         gunTargetPos = zoomOutPos.localPosition;
     }

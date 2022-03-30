@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//y축의 회전값을 미니맵 아이콘에도 적용하고 싶다.
 public class CameraRotate : MonoBehaviour
 {
     float rx;
     float ry;
     public float rotSpeed = 200;
+    public Transform miniMapRot;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -31,5 +33,6 @@ public class CameraRotate : MonoBehaviour
 
         //2. 카메라를 회전하고 싶다.
         transform.eulerAngles = new Vector3(-rx, ry, 0); //degree
+        miniMapRot.eulerAngles = new Vector3(90, ry, 0);
     }
 }
