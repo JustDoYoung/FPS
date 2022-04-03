@@ -37,14 +37,17 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\JMO Assets\WarFX\Demo\Assets\WFX_Demo_DeleteAfterDelay.cs" />
+     <Compile Include="Assets\script\TestCube.cs" />
      <Compile Include="Assets\JMO Assets\WarFX\Demo\Assets\CFX_Demo_RotateCamera.cs" />
      <Compile Include="Assets\script\LevelManager.cs" />
      <Compile Include="Assets\JMO Assets\WarFX\Demo\Assets\WFX_Demo_RandomDir.cs" />
      <Compile Include="Assets\JMO Assets\WarFX\Scripts\CFX_LightIntensityFade.cs" />
+     <Compile Include="Assets\script\Test.cs" />
      <Compile Include="Assets\JMO Assets\WarFX\Demo\Assets\WFX_Demo.cs" />
      <Compile Include="Assets\script\HPPotion.cs" />
      <Compile Include="Assets\JMO Assets\WarFX\Scripts\WFX_LightFlicker.cs" />
      <Compile Include="Assets\script\HitManager.cs" />
+     <Compile Include="Assets\script\TestBase.cs" />
      <Compile Include="Assets\JMO Assets\WarFX\Spawn System\CFX_SpawnSystem.cs" />
      <Compile Include="Assets\script\HPAddPotion.cs" />
      <Compile Include="Assets\script\Gun.cs" />
@@ -56,6 +59,7 @@
      <Compile Include="Assets\JMO Assets\WarFX\Scripts\WFX_BulletHoleDecal.cs" />
      <Compile Include="Assets\JMO Assets\WarFX\Demo\Assets\CFX_Demo_RandomDir.cs" />
      <Compile Include="Assets\script\EnemyManagerStep1.cs" />
+     <Compile Include="Assets\script\TestChangeColor.cs" />
      <Compile Include="Assets\script\Billboard.cs" />
      <Compile Include="Assets\script\PlayerMove.cs" />
      <Compile Include="Assets\JMO Assets\WarFX\Demo\Assets\CFX_Demo_Translate.cs" />
@@ -65,13 +69,9 @@
      <Compile Include="Assets\script\EnemyHP.cs" />
      <Compile Include="Assets\script\PlayerThrow.cs" />
      <Compile Include="Assets\JMO Assets\WarFX\Scripts\CFX_AutoDestructShuriken.cs" />
-     <Compile Include="Assets\JMO Assets\WarFX\Demo\Assets\WFX_Demo_New.cs" />
-     <Compile Include="Assets\script\Test.cs" />
-     <Compile Include="Assets\script\TestBase.cs" />
-     <Compile Include="Assets\script\Test2.cs" />
-     <Compile Include="Assets\script\TestCube.cs" />
      <Compile Include="Assets\script\TestAlarm.cs" />
-     <Compile Include="Assets\script\TestChangeColor.cs" />
+     <Compile Include="Assets\JMO Assets\WarFX\Demo\Assets\WFX_Demo_New.cs" />
+     <Compile Include="Assets\script\Test2.cs" />
      <None Include="Assets\JMO Assets\WarFX\Shaders\WFX_S Multiply Soft.shader" />
      <None Include="Assets\JMO Assets\WarFX\Shaders\WFX_S Multiply Soft Scroll.shader" />
      <None Include="Assets\JMO Assets\WarFX\_Effects\MuzzleFlashes\!MuzzleFlash Differences.txt" />
@@ -655,37 +655,37 @@
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.31f1\Editor\Data\NetStandard\compat\2.0.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-        <HintPath>C:\Users\medici\Documents\GitHub\FPS\Valolant\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
+        <HintPath>C:\Users\Feynman\Documents\GitHub\FPS\Valolant\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-        <HintPath>C:\Users\medici\Documents\GitHub\FPS\Valolant\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
+        <HintPath>C:\Users\Feynman\Documents\GitHub\FPS\Valolant\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
-        <HintPath>C:\Users\medici\Documents\GitHub\FPS\Valolant\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+        <HintPath>C:\Users\Feynman\Documents\GitHub\FPS\Valolant\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-        <HintPath>C:\Users\medici\Documents\GitHub\FPS\Valolant\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+        <HintPath>C:\Users\Feynman\Documents\GitHub\FPS\Valolant\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-        <HintPath>C:\Users\medici\Documents\GitHub\FPS\Valolant\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
+        <HintPath>C:\Users\Feynman\Documents\GitHub\FPS\Valolant\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-        <HintPath>C:\Users\medici\Documents\GitHub\FPS\Valolant\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+        <HintPath>C:\Users\Feynman\Documents\GitHub\FPS\Valolant\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-        <HintPath>C:\Users\medici\Documents\GitHub\FPS\Valolant\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+        <HintPath>C:\Users\Feynman\Documents\GitHub\FPS\Valolant\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-        <HintPath>C:\Users\medici\Documents\GitHub\FPS\Valolant\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+        <HintPath>C:\Users\Feynman\Documents\GitHub\FPS\Valolant\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
-        <HintPath>C:\Users\medici\Documents\GitHub\FPS\Valolant\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+        <HintPath>C:\Users\Feynman\Documents\GitHub\FPS\Valolant\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-        <HintPath>C:\Users\medici\Documents\GitHub\FPS\Valolant\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+        <HintPath>C:\Users\Feynman\Documents\GitHub\FPS\Valolant\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-        <HintPath>C:\Users\medici\Documents\GitHub\FPS\Valolant\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+        <HintPath>C:\Users\Feynman\Documents\GitHub\FPS\Valolant\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
