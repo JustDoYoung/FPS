@@ -1,0 +1,300 @@
+fileFormatVersion: 2
+guid: e2306dc90074fdf4b95d0df64953cee6
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      74: 1827226128182048838
+    second: Take 001
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'RightLowerArm' not found\n"
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 404
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: gorilla(Clone)
+      parentName: 
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.00000004371139, y: 2.6765506e-24, z: 1, w: 6.123234e-17}
+      scale: {x: -1, y: -1, z: -1}
+    - name: Controller-global
+      parentName: gorilla(Clone)
+      position: {x: -0, y: 21, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hip-global
+      parentName: Controller-global
+      position: {x: 1.0657573, y: -3.2404442, z: 1.85985}
+      rotation: {x: -0.18662685, y: 0.9803807, z: -0.06342681, w: -0.0010465777}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Hip-local
+      parentName: Hip-global
+      position: {x: -0, y: 4.5, z: 0.5000005}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Belly-global
+      parentName: Hip-global
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Chest-global
+      parentName: Belly-global
+      position: {x: -0, y: 11, z: 0}
+      rotation: {x: -0.18150523, y: -0.18589285, z: 0.16400951, w: 0.95163053}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: Chest-local
+      parentName: Chest-global
+      position: {x: -0, y: 5.5000005, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head-global
+      parentName: Chest-global
+      position: {x: -0, y: 15, z: 2}
+      rotation: {x: -0.2613762, y: 0.08031863, z: -0.020751933, w: 0.96166563}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: Head-local
+      parentName: Head-global
+      position: {x: -0, y: 8, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Left_Arm-global
+      parentName: Chest-global
+      position: {x: 14, y: 10.5, z: -0.5}
+      rotation: {x: -0.18985304, y: 0.32347587, z: 0.6396246, w: 0.6709692}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000002}
+    - name: Left_Arm-local
+      parentName: Left_Arm-global
+      position: {x: 2.5000002, y: -4.5000005, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Left_Forearm-global
+      parentName: Left_Arm-global
+      position: {x: 3.500001, y: -13.5, z: 0.5000038}
+      rotation: {x: -0.047502574, y: 0.04063538, z: 0.1284156, w: 0.9897483}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000002}
+    - name: Left_Forearm-local
+      parentName: Left_Forearm-global
+      position: {x: 0.5000001, y: -5.9999995, z: -0.50000024}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Left_Hand-global
+      parentName: Left_Forearm-global
+      position: {x: -0.5, y: -12.000001, z: 0.0000019073486}
+      rotation: {x: 0.04506745, y: -0.10244212, z: -0.50670373, w: 0.85482514}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Left_Hand-local
+      parentName: Left_Hand-global
+      position: {x: 3.5, y: 0, z: -2.0000002}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Right_Arm-global
+      parentName: Chest-global
+      position: {x: -14, y: 10.5, z: -0.5}
+      rotation: {x: -0.27987337, y: -0.035184305, z: -0.37764183, w: 0.88194084}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: Right_Arm-local
+      parentName: Right_Arm-global
+      position: {x: -2.5000002, y: -4.5000005, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Right_Forearm-global
+      parentName: Right_Arm-global
+      position: {x: -3.5000038, y: -13.500607, z: 0.5}
+      rotation: {x: 0.024378533, y: 0.22024897, z: 0.7662316, w: 0.60314614}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Right_Forearm-local
+      parentName: Right_Forearm-global
+      position: {x: -5.9999995, y: 0.5000001, z: -0.50000024}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Right_Hand-global
+      parentName: Right_Forearm-global
+      position: {x: -12.999999, y: -0.4999981, z: 0.0000009536743}
+      rotation: {x: -0.040244047, y: -0.29956162, z: -0.077308096, w: 0.9500878}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: Right_Hand-local
+      parentName: Right_Hand-global
+      position: {x: -3.5, y: 0, z: -1.9999995}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Right_Thigh-global
+      parentName: Hip-global
+      position: {x: -6.5, y: 3, z: 1.5}
+      rotation: {x: -0.15492223, y: 0.08045141, z: 0.12902865, w: 0.97615486}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000001}
+    - name: Right_Thigh-local
+      parentName: Right_Thigh-global
+      position: {x: -0, y: -6, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Right_Leg-global
+      parentName: Right_Thigh-global
+      position: {x: -0, y: -12, z: 0}
+      rotation: {x: 0.30093062, y: -0.29665512, z: -0.009536417, w: 0.9062812}
+      scale: {x: 0.9999999, y: 0.9999999, z: 0.99999994}
+    - name: Right_Leg-local
+      parentName: Right_Leg-global
+      position: {x: -0, y: -3.5, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Right_Foot-global
+      parentName: Right_Leg-global
+      position: {x: -0, y: -8, z: 0}
+      rotation: {x: -0.6096052, y: 0.01009068, z: 0.19648135, w: 0.7679029}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000002}
+    - name: Right_Foot-local
+      parentName: Right_Foot-global
+      position: {x: -0, y: -1.5, z: 3.5000002}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Left_Thigh-global
+      parentName: Hip-global
+      position: {x: 6.5, y: 3, z: 1.5}
+      rotation: {x: -0.20789607, y: 0.20122756, z: 0.18338491, w: 0.9394981}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
+    - name: Left_Thigh-local
+      parentName: Left_Thigh-global
+      position: {x: -0, y: -6, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Left_Leg-global
+      parentName: Left_Thigh-global
+      position: {x: -0, y: -12, z: 0}
+      rotation: {x: 0.30592915, y: -0.038318638, z: 0.041817486, w: 0.9503633}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: Left_Leg-local
+      parentName: Left_Leg-global
+      position: {x: -0, y: -3.5, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Left_Foot-global
+      parentName: Left_Leg-global
+      position: {x: -0, y: -8, z: 0}
+      rotation: {x: -0.5235079, y: -0.0515826, z: -0.27458295, w: 0.80491173}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: Left_Foot-local
+      parentName: Left_Foot-global
+      position: {x: -0, y: -1.5, z: 3.5000002}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
